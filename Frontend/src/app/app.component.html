@@ -1,0 +1,38 @@
+<div class="h-screen w-screen flex items-center justify-center bg-black/80">
+  <form
+    [ngClass]="{ hidden: authService.isAuthenticated() }"
+    (ngSubmit)="login()"
+    class="border border-white p-8 rounded-xl flex flex-col items-center"
+  >
+    <p *ngIf="errorMessage" class="text-red-500">{{ errorMessage }}</p>
+    <mat-form-field class="w-96">
+      <mat-label>Email</mat-label>
+      <input
+        class="bg-white"
+        type="email"
+        matInput
+        placeholder="Nacerddine@example.com"
+        [(ngModel)]="email"
+        name="email"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field class="w-96">
+      <mat-label>Password</mat-label>
+      <input
+        class="bg-white"
+        type="password"
+        matInput
+        placeholder="********"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+    </mat-form-field>
+
+    <button mat-stroked-button type="submit">
+      <p class="text-white">Login</p>
+    </button>
+  </form>
+  <router-outlet></router-outlet>
+</div>
